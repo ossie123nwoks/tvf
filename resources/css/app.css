@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --color-primary: #1E3A8A;
+    --color-secondary: #D4AF37;
+    --color-accent: #5EEAD4;
+  }
+  
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+
+  .transition {
+    transition-property: background-color, border-color, color;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+}
