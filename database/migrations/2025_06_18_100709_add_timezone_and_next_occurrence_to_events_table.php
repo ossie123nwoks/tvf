@@ -9,19 +9,21 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::create('blog_posts', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+    public function up()
+{
+    Schema::table('events', function (Blueprint $table) {
+        $table->string('timezone')->default('UTC');
+        $table->timestamp('next_occurrence')->nullable();
+    });
+}
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('blog_posts');
+        Schema::table('events', function (Blueprint $table) {
+            //
+        });
     }
 };

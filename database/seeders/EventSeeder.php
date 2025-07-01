@@ -21,7 +21,6 @@ class EventSeeder extends Seeder
             'location' => 'Central Park',
             'start_time' => Carbon::parse('2023-11-05 10:00:00'),
             'end_time' => Carbon::parse('2023-11-05 14:00:00'),
-            'image' => 'images/event1.jpg', // Add image path
         ]);
 
         Event::create([
@@ -30,7 +29,6 @@ class EventSeeder extends Seeder
             'location' => 'Downtown Square',
             'start_time' => Carbon::parse('2023-11-12 08:00:00'),
             'end_time' => Carbon::parse('2023-11-12 12:00:00'),
-            'image' => 'images/event1.jpg', // Add image path
         ]);
 
         Event::create([
@@ -39,7 +37,6 @@ class EventSeeder extends Seeder
             'location' => 'Church Grounds',
             'start_time' => Carbon::parse('2023-11-19 09:00:00'),
             'end_time' => Carbon::parse('2023-11-21 17:00:00'),
-            'image' => 'images/event1.jpg', // Add image path
         ]);
     }
 }

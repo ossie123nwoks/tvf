@@ -16,7 +16,10 @@
                     <li><a href="{{ route('admin.sermons.index') }}" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">Sermons</a></li>
                     <li><a href="{{ route('admin.events.index') }}" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">Events</a></li>
                     <li><a href="{{ route('admin.gallery.index') }}" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">Gallery</a></li>
-                    <li><a href="{{ route('admin.messages') }}" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">Messages</a></li>
+                    <li><a href="{{ route('admin.series.index') }}" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">Series</a></li>
+                    <li><a href="{{ route('admin.topics.index') }}" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">Topics</a></li>
+                    <li><a href="{{ route('admin.categories.index') }}" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">Categories</a></li>
+                    <li><a href="{{ route('admin.comments.index') }}" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">Comments</a></li>
                 </ul>
             </nav>
 
@@ -53,12 +56,6 @@
                     <a href="{{ route('admin.gallery.index') }}" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">View Gallery</a>
                 </div>
 
-                <!-- Messages Card -->
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
-                    <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100">Messages</h3>
-                    <p class="text-gray-600 dark:text-gray-400">{{ $messagesCount }} Messages</p>
-                    <a href="{{ route('admin.messages') }}" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">View Messages</a>
-                </div>
             </div>
         </div>
     </div>

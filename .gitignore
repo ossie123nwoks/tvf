@@ -21,3 +21,12 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+# Docker-related files
+Dockerfile
+Dockerfile.*
+docker-compose.yml
+docker-compose.*.yml
+.dockerignore
+# Docker volumes and local data
+.docker/
+docker-data/
