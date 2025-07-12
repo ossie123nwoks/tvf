@@ -1,3 +1,5 @@
+@php use Illuminate\Support\Str; @endphp
+
 <x-app-layout>
 
 <!-- Preloader -->
@@ -136,7 +138,7 @@
           <svg class="h-4 w-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
           </svg>
-          Repeats {{ $event->recurrence_interval > 1 ? 'every '.$event->recurrence_interval.' '.str_plural($event->recurrence) : $event->recurrence }}
+          Repeats {{ $event->recurrence_interval > 1 ? 'every '.$event->recurrence_interval.' '.Str::plural($event->recurrence) : $event->recurrence }}          
         </div>
         @endif
 

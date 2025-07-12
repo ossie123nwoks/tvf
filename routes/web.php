@@ -46,7 +46,7 @@ require __DIR__.'/auth.php';
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return redirect()->route('home');
     })->name('dashboard');
 
     Route::post('/comments/{comment}/reply', [CommentController::class, 'reply'])

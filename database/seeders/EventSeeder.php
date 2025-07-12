@@ -2,41 +2,47 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
 use App\Models\Event;
 use Carbon\Carbon;
-use Illuminate\Database\Seeder;
 
 class EventSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
-        // Create sample events
-        Event::create([
-            'title' => 'Community Picnic',
-            'description' => 'Join us for a fun-filled community picnic at the park.',
-            'location' => 'Central Park',
-            'start_time' => Carbon::parse('2023-11-05 10:00:00'),
-            'end_time' => Carbon::parse('2023-11-05 14:00:00'),
-        ]);
+        // 1. Create non-recurring events (with proper null handling)
+        Event::factory()
+            ->count(30)
+            ->create([
+                'is_recurring' => false,
+                'recurrence' => null,
+                'recurrence_interval' => 0,  // or whatever default your DB accepts
+                'recurrence_count' => 0,
+                'recurrence_end_date' => null,
+                'next_occurrence' => null
+            ]);
 
-        Event::create([
-            'title' => 'Charity Run',
-            'description' => 'Participate in our annual charity run to support local causes.',
-            'location' => 'Downtown Square',
-            'start_time' => Carbon::parse('2023-11-12 08:00:00'),
-            'end_time' => Carbon::parse('2023-11-12 12:00:00'),
-        ]);
+        // 2. Create recurring events
+        Event::factory()
+            ->count(20)
+            ->create([
+                'is_recurring' => true,
+                'recurrence' => 'weekly',
+                'recurrence_interval' => 1,
+                'recurrence_count' => 12,
+                'recurrence_end_date' => Carbon::now()->addYear(),
+                'next_occurrence' => Carbon::now()->addWeek()
+            ]);
 
-        Event::create([
-            'title' => 'Youth Camp',
-            'description' => 'A weekend of fun, fellowship, and spiritual growth for our youth.',
-            'location' => 'Church Grounds',
-            'start_time' => Carbon::parse('2023-11-19 09:00:00'),
-            'end_time' => Carbon::parse('2023-11-21 17:00:00'),
+        // 3. Specific example events
+        Event::factory()->create([
+            'title' => 'Weekly Team Sync',
+            'is_recurring' => true,
+            'recurrence' => 'weekly',
+            'recurrence_interval' => 1,
+            'start_time' => Carbon::now()->next('Monday')->setTime(10, 0),
+            'end_time' => Carbon::now()->next('Monday')->setTime(11, 0),
+            'next_occurrence' => Carbon::now()->next('Monday')->setTime(10, 0)
         ]);
     }
 }
