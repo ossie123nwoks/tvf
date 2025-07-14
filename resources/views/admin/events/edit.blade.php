@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form action="{{ route('admin.events.update', $event) }}" method="POST">
+                    <form action="{{ route('admin.events.update', $event) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -42,6 +42,38 @@
                             <label for="location" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Location</label>
                             <input type="text" name="location" id="location" value="{{ old('location', $event->location) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm" required>
                         </div>
+
+                        <!-- Current Image -->
+                    @if($event->image)
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Current Image</label>
+                        <img src="{{ $event->image_url }}" alt="Event image" class="mt-2 h-32 object-cover rounded">
+                    </div>
+                    @endif
+
+                    <!-- Image Upload -->
+                    <div class="mb-4">
+                        <label for="image" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                            {{ $event->image ? 'Change Image' : 'Upload Image' }}
+                        </label>
+                        <input type="file" name="image" id="image" class="mt-1 block w-full text-sm text-gray-500
+                            file:mr-4 file:py-2 file:px-4
+                            file:rounded-md file:border-0
+                            file:text-sm file:font-semibold
+                            file:bg-blue-50 file:text-blue-700
+                            hover:file:bg-blue-100">
+                        <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">JPEG, PNG, JPG, or GIF (Max: 2MB)</p>
+                    </div>
+
+                    <!-- Remove Image Checkbox -->
+                    @if($event->image)
+                    <div class="mb-4">
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" name="remove_image" value="1" class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                            <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Remove current image</span>
+                        </label>
+                    </div>
+                    @endif
 
                         <!-- Recurrence Section -->
                         <div class="mt-6 border-t pt-4">

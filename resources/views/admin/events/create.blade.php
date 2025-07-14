@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form action="{{ route('admin.events.store') }}" method="POST">
+                    <form action="{{ route('admin.events.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <!-- Title -->
@@ -40,6 +40,18 @@
                         <div class="mb-4">
                             <label for="location" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Location</label>
                             <input type="text" name="location" id="location" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" required>
+                        </div>
+
+                        <!-- Image Upload -->
+                        <div class="mb-4">
+                            <label for="image" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Event Image</label>
+                            <input type="file" name="image" id="image" class="mt-1 block w-full text-sm text-gray-500
+                                file:mr-4 file:py-2 file:px-4
+                                file:rounded-md file:border-0
+                                file:text-sm file:font-semibold
+                                file:bg-blue-50 file:text-blue-700
+                                hover:file:bg-blue-100">
+                            <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">JPEG, PNG, JPG, or GIF (Max: 2MB)</p>
                         </div>
 
                         <!-- Recurrence Section -->

@@ -109,6 +109,7 @@ class EventController extends Controller
                 Storage::disk('public')->delete($event->image);
             }
             $validated['image'] = null;
+            session()->flash('message', 'Image removed successfully');
         }
 
         $event->update($validated);
